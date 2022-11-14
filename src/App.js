@@ -7,7 +7,7 @@ import Login from "./views/Login";
 import Signup from "./views/Signup";
 import ViewCatalog from "./views/ViewCatalog";
 import ViewCart from "./views/ViewCart";
-
+import { UserAuthContextProvider } from "./UserAuthContext";
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
     <Router>
       <Nav />
       <div>
-      
+      <UserAuthContextProvider>
       <Routes>
       
 
@@ -26,6 +26,7 @@ function App() {
       <Route path="/viewcart" element={<ViewCart />} />
       
       </Routes>
+      </UserAuthContextProvider>
       </div>
     </Router>
   );

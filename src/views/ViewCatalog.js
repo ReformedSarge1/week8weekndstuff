@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase-config';
 import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { useUserAuth } from "../UserAuthContext";
+
 
 function ViewCatalog() {
     const [products, setProducts] = useState([]);
@@ -15,7 +17,7 @@ function ViewCatalog() {
         };
         getProducts();
     }, []);
-
+    const { user, logout } = useUserAuth
 
     return (
 
@@ -38,6 +40,7 @@ function ViewCatalog() {
                                 <div className="card-body">
                                     <a href="" className="card-link">Add to Cart</a>
                                 </div>
+                                <p>User Email :{user && user.email} </p>
                             </div>
                         </div>
                     )

@@ -11,6 +11,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const { logIn } = useUserAuth();
   const navigate = useNavigate();
+  const { user, logout } = useUserAuth
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +63,7 @@ const Login = () => {
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to="/signup">Sign up</Link>
       </div>
+      <p>User Email :{user && user.email} </p>
     </>
   );
 };

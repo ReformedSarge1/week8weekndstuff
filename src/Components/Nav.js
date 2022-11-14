@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 
 
 export default class Nav extends Component {
+  
+  // const logout = () => {
+  //   signOut(auth);
+  // };
 
   render() {
     return (
@@ -24,7 +28,7 @@ export default class Nav extends Component {
                 <Link className="nav-link" to="/viewcart">View Cart</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/logout">Logout</Link>
+                <Link className="nav-link" to="/login">Logout</Link>
               </li>
             </ul>
           </div>

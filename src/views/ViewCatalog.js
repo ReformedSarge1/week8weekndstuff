@@ -2,22 +2,11 @@
 import { useState, useEffect } from 'react';
 import { db } from '../firebase-config';
 import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { useUserAuth } from "../UserAuthContext";
+
 
 function ViewCatalog() {
     const [products, setProducts] = useState([]);
-    // window.addEventListener('load', () => {
-    //     Fetchdata();
-    // });
-
-    // const Fetchdata = () => {
-    //     db.collection("data").get().then((querySnapshot) => {
-    //         querySnapshot.forEach(element => {
-    //             var data = element.data();
-    //             setProducts(arr => [...arr, data]);
-
-    //         });
-    //     })
-    // }
     const productsCollectionRef = collection(db, "products")
     useEffect(() => {
         const getProducts = async () => {
@@ -28,7 +17,7 @@ function ViewCatalog() {
         };
         getProducts();
     }, []);
-
+    const { user, logout } = useUserAuth
 
     return (
 
@@ -51,6 +40,7 @@ function ViewCatalog() {
                                 <div className="card-body">
                                     <a href="" className="card-link">Add to Cart</a>
                                 </div>
+                                <p>User Email :{user && user.email} </p>
                             </div>
                         </div>
                     )
@@ -61,5 +51,4 @@ function ViewCatalog() {
 export default ViewCatalog;
 
 //we will need to display the 20 items available with an add to cart button which adds which
-//ever item to the cart, we need to just keep it simple and not worry too much about choosing a specific qty,
 //just make the button add 1 to the cart,
